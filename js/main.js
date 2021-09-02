@@ -112,8 +112,12 @@ const colors = [
 // iconsContainer.innerHTML = '';
 
 const coloredArray = colorIcons(icons, colors);
-console.log(coloredArray);
+// console.log(coloredArray);
 print(coloredArray, iconsContainer);
+const types = getTypes(coloredArray);
+const select = document.getElementById('type');
+// console.log(select);
+printOptions(types, select);
 
 
 
@@ -159,4 +163,11 @@ function getTypes(array) {
         }
     })
      return types;
+}
+
+function printOptions(array, select) {
+    array.forEach((element) => {
+        select.innerHTML += `<option value="${element}">${element}</option>`
+    });
+    
 }
