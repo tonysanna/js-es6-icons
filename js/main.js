@@ -120,6 +120,15 @@ const select = document.getElementById('type');
 printOptions(types, select);
 
 
+select.onchange = function (element) {
+
+   const filtered = filterValues(icons,element.target.value );
+   console.log(filtered);
+
+   print(filtered,iconsContainer )
+};
+
+
 
 function print(array, container) {
     container.innerHTML = '';
@@ -170,4 +179,22 @@ function printOptions(array, select) {
         select.innerHTML += `<option value="${element}">${element}</option>`
     });
     
+};
+
+function filterValues(array, type) {
+    const filteredIcons = array.filter((element) => {
+        if (element.type ===type) {
+            return true
+        }
+        return false;
+
+    });
+
+    if (type === '') {
+        return array;
+    }
+
+
+    return filteredIcons;
+
 }
